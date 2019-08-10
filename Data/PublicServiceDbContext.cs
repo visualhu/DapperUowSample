@@ -1,8 +1,9 @@
 ﻿using Data.Context;
 using Infrastructure.Data;
 using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 using System.Data;
-using TCBase.Data.Connection;
+//using TCBase.Data.Connection;
 
 namespace Data
 {
@@ -11,10 +12,11 @@ namespace Data
         public override DataSourceOptions DataSourceOptions => DataSourceOptions.TCFlyPublicService;
         public PublicServiceDbContext(IOptions<DapperDbContextOptions> optionsAccessor) : base(optionsAccessor) { }
 
-        protected override IDbConnection CreateConnection(string dbName)
+        protected override IDbConnection CreateConnection(string connectionString)
         {
-            //IDbConnection conn = new MySqlConnection(connectionString);
-            return DataSource.GetConnection(dbName);
+            IDbConnection conn = new MySqlConnection(connectionString);
+            return conn;
+            //return DataSource.GetConnection(dbName);
         }
     }
 }

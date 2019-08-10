@@ -10,7 +10,7 @@ namespace Data
     {
 
 
-        public FlightUserRepository(IEnumerable<DapperDbContext> contexts) : base(contexts, DataSourceOptions.TCFlyPublicService)
+        public FlightUserRepository(IEnumerable<IContext> contexts) : base(contexts, DataSourceOptions.TCFlyPublicService)
         {
 
         }

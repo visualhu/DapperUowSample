@@ -7,8 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.1" />
-    <PackageReference Include="TCBase.Data.Connection" Version="2.4.11" />
-    <PackageReference Include="TCBase.Data.MySQL.MySqlConnector" Version="2.4.4" />
+    <PackageReference Include="MySql.Data" Version="8.0.17" />
   </ItemGroup>
 
   <ItemGroup>

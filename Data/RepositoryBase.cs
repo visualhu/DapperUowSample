@@ -7,9 +7,9 @@ namespace Data
 {
     public class RepositoryBase
     {
-        protected readonly DapperDbContext DbContext;
+        protected readonly IContext DbContext;
 
-        public RepositoryBase(IEnumerable<DapperDbContext> contents, DataSourceOptions datasource)
+        public RepositoryBase(IEnumerable<IContext> contents, DataSourceOptions datasource)
         {
             DbContext = contents.FirstOrDefault(p => p.DataSourceOptions == datasource);
 

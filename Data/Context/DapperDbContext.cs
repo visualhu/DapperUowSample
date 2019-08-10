@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using TCBase.Data.Connection;
+//using TCBase.Data.Connection;
 
 namespace Data.Context
 {
@@ -25,14 +25,15 @@ namespace Data.Context
         public abstract DataSourceOptions DataSourceOptions { get; }
 
         //protected abstract IDbConnection CreateConnection(string connectionString);
-        protected abstract IDbConnection CreateConnection(string dbName);
+        protected abstract IDbConnection CreateConnection(string connectionString);
 
         protected DapperDbContext(IOptions<DapperDbContextOptions> optionsAccessor)
         {
-            SqlMapperExtensions.GetDatabaseType = DataSource.GetDatabaseType;
+            //SqlMapperExtensions.GetDatabaseType = DataSource.GetDatabaseType;
+            SqlMapperExtensions.GetDatabaseType = conn => "MySqlConnection";
             SqlMapperExtensions.TableNameMapper = (name) => name.Name;
             _options = optionsAccessor.Value;
-            _connection = CreateConnection(_options.DbName);
+            _connection = CreateConnection(_options.Configuration);
 
             _connection.Open();
         }

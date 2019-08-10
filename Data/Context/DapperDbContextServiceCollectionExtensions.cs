@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace Data.Context
@@ -19,7 +20,7 @@ namespace Data.Context
 
             services.AddOptions();
             services.Configure(setupAction);
-            services.AddScoped<DapperDbContext, T>();
+            services.AddScoped<IContext, T>();
 
 
             return services;
