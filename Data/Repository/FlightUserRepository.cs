@@ -22,13 +22,13 @@ namespace Data
         }
         public async Task<IEnumerable<FlightUser>> GetAllAsync()
         {
-            return await DbContext.QueryAsync<FlightUser>(@"SELECT * from  FlightUser");
+            return await DbContext.QueryAsync<FlightUser>(@"SELECT * from  order");
         }
         public async Task<FlightUser> GetByIdAsync(long id)
         {
             string sql = @"SELECT*
-                            FROM FlightUser
-                            WHERE FUId = @Id";
+                            FROM order
+                            WHERE Id = @Id";
             return await DbContext.QueryFirstOrDefaultAsync<FlightUser>(sql, new { Id = id });
         }
         //Task<bool> DeleteAsync(long id);

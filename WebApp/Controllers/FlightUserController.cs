@@ -20,7 +20,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public JsonResult Index()
         {
-            var result = _repository.GetByIdAsync(1700428).Result;
+            var result = _repository.GetByIdAsync(1).Result;
 
             return Json(result);
         }

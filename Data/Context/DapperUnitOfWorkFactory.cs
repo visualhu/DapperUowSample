@@ -6,9 +6,9 @@ namespace Data.Context
 {
     public class DapperUnitOfWorkFactory : IUnitOfWorkFactory
     {
-        private readonly IEnumerable<DapperDbContext> _contexts;
+        private readonly IEnumerable<IContext> _contexts;
 
-        public DapperUnitOfWorkFactory(IEnumerable<DapperDbContext> contexts)
+        public DapperUnitOfWorkFactory(IEnumerable<IContext> contexts)
         {
             _contexts = contexts;
         }

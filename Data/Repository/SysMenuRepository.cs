@@ -21,12 +21,12 @@ namespace Data
         }
         public async Task<IEnumerable<SysMenu>> GetAllAsync()
         {
-            return await DbContext.QueryAsync<SysMenu>(@"SELECT * from  SysMenu");
+            return await DbContext.QueryAsync<SysMenu>(@"SELECT * from  customer");
         }
         public async Task<SysMenu> GetByIdAsync(string id)
         {
             string sql = @"SELECT*
-                            FROM SysMenu
+                            FROM customer
                             WHERE Id = @Id";
             return await DbContext.QueryFirstOrDefaultAsync<SysMenu>(sql, new { Id = id });
         }

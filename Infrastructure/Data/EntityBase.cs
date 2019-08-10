@@ -1,4 +1,4 @@
-﻿namespace Data
+﻿namespace Infrastructure.Data
 {
     public class EntityBase
     {

@@ -2,6 +2,7 @@
 using Infrastructure.Data;
 using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Data;
 //using TCBase.Data.Connection;
 
@@ -10,7 +11,7 @@ namespace Data
     public class SentryDbContext : DapperDbContext
     {
         public override DataSourceOptions DataSourceOptions => DataSourceOptions.TCFlySentryPlus;
-        public SentryDbContext(IOptions<DapperDbContextOptions> optionsAccessor) : base(optionsAccessor) { }
+        public SentryDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors) : base(optionsAccessors) { }
 
         protected override IDbConnection CreateConnection(string connectionString)
         {

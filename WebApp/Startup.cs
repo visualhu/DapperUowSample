@@ -17,7 +17,7 @@ namespace WebApp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            TCBase.ConfigCenter.ConfigCenterClient.Init();
+            //TCBase.ConfigCenter.ConfigCenterClient.Init();
         }
 
         public IConfiguration Configuration { get; }
@@ -27,13 +27,13 @@ namespace WebApp
         {
             services.AddDapperDbContext<SentryDbContext>(options =>
             {
-                //options.DbName = "TCFlySentryPlus";
+                options.DbName = "TCFlySentryPlus";
                 options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo1;Uid=rdbuser;Pwd=Qwer123$;";
             });
 
             services.AddDapperDbContext<PublicServiceDbContext>(options =>
             {
-                //options.DbName = "TCFlyPublicService";
+                options.DbName = "TCFlyPublicService";
                 options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo2;Uid=rdbuser;Pwd=Qwer123$;";
             });
 

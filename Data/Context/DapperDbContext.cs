@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 //using TCBase.Data.Connection;
 
@@ -27,12 +28,12 @@ namespace Data.Context
         //protected abstract IDbConnection CreateConnection(string connectionString);
         protected abstract IDbConnection CreateConnection(string connectionString);
 
-        protected DapperDbContext(IOptions<DapperDbContextOptions> optionsAccessor)
+        protected DapperDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors)
         {
             //SqlMapperExtensions.GetDatabaseType = DataSource.GetDatabaseType;
             SqlMapperExtensions.GetDatabaseType = conn => "MySqlConnection";
             SqlMapperExtensions.TableNameMapper = (name) => name.Name;
-            _options = optionsAccessor.Value;
+            _options = optionsAccessors.FirstOrDefault(p=>p.Value.DbName== DataSourceOptions.ToString()).Value;
             _connection = CreateConnection(_options.Configuration);
 
             _connection.Open();
