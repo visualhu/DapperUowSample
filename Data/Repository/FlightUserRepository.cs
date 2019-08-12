@@ -26,8 +26,8 @@ namespace Data
         }
         public async Task<FlightUser> GetByIdAsync(long id)
         {
-            string sql = @"SELECT*
-                            FROM order
+            string sql = @"SELECT *
+                            FROM `Order`
                             WHERE Id = @Id";
             return await DbContext.QueryFirstOrDefaultAsync<FlightUser>(sql, new { Id = id });
         }

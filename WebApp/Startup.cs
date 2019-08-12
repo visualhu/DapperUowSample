@@ -25,16 +25,16 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDapperDbContext<SentryDbContext>(options =>
+            services.AddDapperDbContext<SentryDbContext>("TCFlySentryPlus", options =>
             {
                 options.DbName = "TCFlySentryPlus";
-                options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo1;Uid=rdbuser;Pwd=Qwer123$;";
+                options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo2;Uid=rdbuser;Pwd=Qwer123$;";
             });
 
-            services.AddDapperDbContext<PublicServiceDbContext>(options =>
+            services.AddDapperDbContext<PublicServiceDbContext>("TCFlyPublicService", options =>
             {
                 options.DbName = "TCFlyPublicService";
-                options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo2;Uid=rdbuser;Pwd=Qwer123$;";
+                options.Configuration = "Server=192.168.3.222;Port=3306;Database=demo1;Uid=rdbuser;Pwd=Qwer123$;";
             });
 
             services.AddScoped<IFlightUserRepository, FlightUserRepository>();

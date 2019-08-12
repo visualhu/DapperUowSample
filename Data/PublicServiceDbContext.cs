@@ -11,7 +11,8 @@ namespace Data
     public class PublicServiceDbContext : DapperDbContext
     {
         public override DataSourceOptions DataSourceOptions => DataSourceOptions.TCFlyPublicService;
-        public PublicServiceDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors) : base(optionsAccessors) { }
+        public PublicServiceDbContext(IOptionsFactory<DapperDbContextOptions> optionsAccessors) : base(optionsAccessors) { }
+        //public PublicServiceDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors) : base(optionsAccessors) { }
 
         protected override IDbConnection CreateConnection(string connectionString)
         {

@@ -11,7 +11,8 @@ namespace Data
     public class SentryDbContext : DapperDbContext
     {
         public override DataSourceOptions DataSourceOptions => DataSourceOptions.TCFlySentryPlus;
-        public SentryDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors) : base(optionsAccessors) { }
+        public SentryDbContext(IOptionsFactory<DapperDbContextOptions> optionsAccessors) : base(optionsAccessors) { }
+        //public SentryDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors) : base(optionsAccessors) { }
 
         protected override IDbConnection CreateConnection(string connectionString)
         {

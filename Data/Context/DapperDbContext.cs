@@ -28,12 +28,14 @@ namespace Data.Context
         //protected abstract IDbConnection CreateConnection(string connectionString);
         protected abstract IDbConnection CreateConnection(string connectionString);
 
-        protected DapperDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors)
+        protected DapperDbContext(IOptionsFactory<DapperDbContextOptions> optionsAccessors)
+        //protected DapperDbContext(IEnumerable<IOptions<DapperDbContextOptions>> optionsAccessors)
         {
             //SqlMapperExtensions.GetDatabaseType = DataSource.GetDatabaseType;
             SqlMapperExtensions.GetDatabaseType = conn => "MySqlConnection";
             SqlMapperExtensions.TableNameMapper = (name) => name.Name;
-            _options = optionsAccessors.FirstOrDefault(p=>p.Value.DbName== DataSourceOptions.ToString()).Value;
+            _options = optionsAccessors.Create(DataSourceOptions.ToString());
+            //_options = optionsAccessors.FirstOrDefault(p=>p.Configure).Value;
             _connection = CreateConnection(_options.Configuration);
 
             _connection.Open();

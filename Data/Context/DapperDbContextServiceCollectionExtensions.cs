@@ -6,7 +6,7 @@ namespace Data.Context
 {
     public static class DapperDbContextServiceCollectionExtensions
     {
-        public static IServiceCollection AddDapperDbContext<T>(this IServiceCollection services, Action<DapperDbContextOptions> setupAction) where T : DapperDbContext
+        public static IServiceCollection AddDapperDbContext<T>(this IServiceCollection services,string name, Action<DapperDbContextOptions> setupAction) where T : DapperDbContext
         {
             if (services == null)
             {
@@ -19,7 +19,7 @@ namespace Data.Context
             }
 
             services.AddOptions();
-            services.Configure(setupAction);
+            services.Configure(name,setupAction);
             services.AddScoped<IContext, T>();
 
 
